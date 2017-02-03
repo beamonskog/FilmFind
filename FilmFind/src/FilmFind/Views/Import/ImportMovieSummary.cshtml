@@ -1,0 +1,41 @@
+﻿@model FilmFind.Entities.Movie
+
+@*@section Styles {
+        <link href="@Url.Content("~/css/MovieSummary.css")" rel="stylesheet" type="text/css" />
+    }*@
+
+<section style="border: thin solid #eeeeee">
+    <form method="post" asp-action="AddToDb">
+        <input asp-for="Director" type="hidden" class="form-control" />
+        <input asp-for="Genre" type="hidden" class="form-control" />
+        <input asp-for="Year" type="hidden" class="form-control" />
+        <input asp-for="Plot" type="hidden" class="form-control" />
+        <input asp-for="IMDBRating" type="hidden" class="form-control" />
+        <input asp-for="RottenTomatoesRating" type="hidden" class="form-control" />
+        <input asp-for="Title" type="hidden" class="form-control" />
+        <input asp-for="PosterUrl" type="hidden" class="form-control" />
+        <input asp-for="Created" type="hidden" class="form-control" />
+
+        <div class="container-fluid" border="1">
+            <div class="row">
+                <div class="col-md-2" style="border: thin solid #eeeeee">
+                    <img src="@Model.PosterUrl" width="120" />
+                </div>
+                <div class="col-md-9" style="margin-top: 10px">
+                    <p>
+                        <h3 style="display:inline">@Model.Title</h3>
+                        <i style="margin-left: 25px">(@Model.Year)</i>
+                    </p>
+                    <h4>@Model.Director</h4>
+                    <div>@Model.Genre</div>
+                    <p style="margin-top:20px;"><b>IMDB</b>: @Model.IMDBRating, <b>RT</b>: @Model.RottenTomatoesRating</p>
+                </div>
+
+                <button style="margin-top: 60px" type="submit" class="btn btn-primary col-md-1">
+                    Add to DB
+                    @*<span class="glyphicon glyphicon-plus fa-2x"></span>*@
+                </button>
+            </div>
+        </div>
+    </form>
+</section>

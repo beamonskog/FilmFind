@@ -1,0 +1,53 @@
+﻿@model FilmFind.ViewModels.UserMovie.ToggleIconsViewModel
+
+@if (!User.Identity.IsAuthenticated)
+{
+    return;
+}
+
+<div style="display:inline-block">
+
+    @*Add/Remove*@
+    <a asp-controller="UserMovie" asp-action="ToggleAddRemove" asp-route-id="@Model.MovieId">
+        @if (Model.IsAdded)
+        {
+            <i class="fa fa-minus fa-2x" title="Remove from my movies" style="color:#337ab7"></i>
+        }
+        else
+        {
+            <i class="fa fa-plus fa-2x" title="Add to my movies" style="color:#337ab7"></i>
+        }
+    </a>
+
+    @if (Model.IsAdded)
+    {
+        @*Favorite*@
+        <a asp-controller="UserMovie" asp-action="ToggleFavorite" asp-route-id="@Model.MovieId">
+            @if (Model.IsFavorite)
+            {
+                <i class="fa fa-star fa-2x" title="Remove from favorite" style="color:#337ab7"></i>
+            }
+            else
+            {
+                <i class="fa fa-star fa-2x" title="Add favorite" style="color:rgba(51, 122, 183, 0.25)"></i>
+            }
+        </a>
+
+        @*Hype*@
+        <a asp-controller="UserMovie" asp-action="ToggleHype" asp-route-id="@Model.MovieId">
+            @if (Model.IsHyped)
+            {
+                <span class="glyphicon glyphicon-sunglasses fa-2x" title="Remove hype" style="color:#337ab7"></span>
+            }
+            else
+            {
+                <span class="glyphicon glyphicon-sunglasses fa-2x" title="Add hype" style="color:rgba(51, 122, 183, 0.25)"></span>
+            }
+        </a>
+
+        <a asp-controller="UserMovie" asp-action="EditUserMovie" asp-route-id="@Model.MovieId">
+            <span class="fa fa-edit fa-2x" title="Edit" style="color:#337ab7"></span>
+        </a>
+    }
+
+</div>

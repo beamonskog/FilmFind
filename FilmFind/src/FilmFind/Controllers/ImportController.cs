@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using FilmFind.ViewModels;
 using FilmFind.Entities;
 using FilmFind.Services;
 using System;
 using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
+using FilmFind.ViewModels.Movie;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,7 +25,7 @@ namespace FilmFind.Controllers
 
         public IActionResult Index(IEnumerable<Movie> movies)
         {
-            if (movies==null)
+            if (movies == null)
             {
                 return View(movies);
 
@@ -34,18 +34,19 @@ namespace FilmFind.Controllers
         }
 
         /// <summary>
-        /// Uses OMDB to try and import the sought movie.
+        /// Uses OMDB to try and import the desired movie.
         /// </summary>
         /// <param name="searchTerm"></param>
         /// <returns></returns>
         [HttpGet]
         public IActionResult Import(SearchData searchTerm)
         {
-            var helper = new SearchService();
+            var helper = new ImportService();
             var movies = helper.GetMoviesOnline(searchTerm.SearchText).Result;
             if (movies != null)
             {
-                return View("Index",movies);
+                ImportMoviesViewModel model = GetImportModelFromMovies(movies);
+                return View("Index", model);
             }
             else
             {
@@ -53,16 +54,38 @@ namespace FilmFind.Controllers
             }
         }
 
-        [HttpPost]
-        public IActionResult AddToDb(Movie newMovie)
+        private ImportMoviesViewModel GetImportModelFromMovies(List<Movie> movies)
         {
-            if (_sqlMovieData.GetAll().Any(m => m.Title == newMovie.Title))
+            if (movies.Count == 0)
             {
-                return Content($"\"{newMovie.Title}\" is already in db!");
-
+                return null;
             }
-            _sqlMovieData.Add(newMovie);
-            return View("index");
+
+            var resultModel = new ImportMoviesViewModel();
+            foreach (var movie in movies)
+            {
+                var isInDb = _sqlMovieData.Get(movie.Title) != null;
+                var thisModel = new ImportMovieViewModel()
+                {
+                    Movie = movie,
+                    IsInDb = isInDb
+                };
+                resultModel.ImportMovies.Add(thisModel);
+            }
+            return resultModel;
+        }
+
+        [HttpPost]
+        public void AddToDb(ImportMovieViewModel newMovie)
+        {
+            if (_sqlMovieData.GetAll().Any(m => m.Title == newMovie.Movie.Title))
+            {
+                //return Content($"\"{newMovie.Title}\" is already in db!");
+                throw new Exception($"\"{newMovie.Movie.Title}\" is already in db!");
+            }
+            _sqlMovieData.Add(newMovie.Movie);
+            //return View("Import");
+            //return View("index");
             //return RedirectToAction(actionName: "index", controllerName: "home");
         }
 

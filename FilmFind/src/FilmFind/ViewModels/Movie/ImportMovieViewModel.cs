@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace FilmFind.ViewModels.Movie
+﻿namespace FilmFind.ViewModels.Movie
 {
     public class ImportMovieViewModel
     {
-        public IEnumerable<Entities.Movie> Movies { get; set; }
-        public string Message { get; set; }
+        public FilmFind.Entities.Movie Movie { get; set; }
+        public bool IsInDb { get; set; }
     }
 }

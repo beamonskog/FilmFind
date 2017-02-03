@@ -1,4 +1,4 @@
-﻿@model IEnumerable<FilmFind.Entities.Movie>
+﻿@model  FilmFind.ViewModels.Movie.ImportMoviesViewModel
 
 
 @{
@@ -21,9 +21,9 @@
 
 @if (Model != null)
 {
-    foreach (var movie in Model)
+    foreach (var movie in @Model.ImportMovies)
     {
-        @Html.Partial("ImportMovieSummary", movie)
+        @Html.Partial("_ImportMovieSummary", movie)
 
     }
 }

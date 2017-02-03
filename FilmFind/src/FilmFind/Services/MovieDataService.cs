@@ -14,6 +14,7 @@ namespace FilmFind.Services
         IEnumerable<Movie> GetMostHyped(int count);
         IEnumerable<Movie> Search(string searchString);
         Movie Get(int id);
+        Movie Get(string title);
         Movie GetComplete(int id);
         Movie Add(Movie newMovie);
         Movie AddHype(Movie movie);
@@ -83,6 +84,15 @@ namespace FilmFind.Services
                 //Include(m => m.AddedByUsers.Select(s => s.UserMovies)).
                 //Include("AddedByUsers").
                 //Select(x=> new { Movie = x, Reviews = x.AddedByUsers.Select(y => y.UserMovies) }).
+                FirstOrDefault();
+
+            return movie;
+        }
+
+        public Movie Get(string title)
+        {
+            var movie = _context.AllMovies.
+                Where(m => m.Title == title).
                 FirstOrDefault();
 
             return movie;

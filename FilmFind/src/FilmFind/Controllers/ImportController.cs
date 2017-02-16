@@ -71,7 +71,7 @@ namespace FilmFind.Controllers
         }
 
         [HttpPost]
-        public void AddToDb(ImportMovieViewModel newMovie)
+        public IActionResult AddToDb(ImportMovieViewModel newMovie)
         {
             if (_sqlMovieData.GetAll().Any(m => m.Title == newMovie.Movie.Title))
             {
@@ -80,7 +80,7 @@ namespace FilmFind.Controllers
             }
             _sqlMovieData.Add(newMovie.Movie);
             //return View("Import");
-            //return View("index");
+            return View("index");
             //return RedirectToAction(actionName: "index", controllerName: "home");
         }
 

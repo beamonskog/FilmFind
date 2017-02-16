@@ -201,6 +201,7 @@
 -r:"C:\Users\Kristoffer\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\Kristoffer\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll"
 -resource:"C:\repos\Mine\FilmFind\FilmFind\src\FilmFind\obj\Debug\netcoreapp1.0\FilmFinddotnet-compile.deps.json",FilmFind.deps.json
+"C:\repos\Mine\FilmFind\FilmFind\src\FilmFind\IObjectContextAdapter.cs"
 "C:\repos\Mine\FilmFind\FilmFind\src\FilmFind\MappingProfile.cs"
 "C:\repos\Mine\FilmFind\FilmFind\src\FilmFind\Program.cs"
 "C:\repos\Mine\FilmFind\FilmFind\src\FilmFind\Startup.cs"

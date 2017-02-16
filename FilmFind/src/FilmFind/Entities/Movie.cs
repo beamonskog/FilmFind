@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmFind.Entities
 {
@@ -28,7 +29,13 @@ namespace FilmFind.Entities
         //public ICollection<string> AllComments { get; set; }
         //public ICollection<UserMovieRating> UserRatings { get; set; }
 
+        public Movie()
+        {
+            Created = DateTime.Now;
+        }
     }
+
+
 
     public class MovieSummary
     {

@@ -6,6 +6,8 @@ using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 using FilmFind.ViewModels.Movie;
+using FilmFind.Services.Import;
+using AutoMapper;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,12 +17,14 @@ namespace FilmFind.Controllers
     public class ImportController : Controller
     {
         private readonly IMovieData _sqlMovieData;
+        private readonly IMapper _mapper;
 
         //private Movie _newImportMovie { get; set; }
 
-        public ImportController(IMovieData movieData)
+        public ImportController(IMovieData movieData, IMapper mapper)
         {
             _sqlMovieData = movieData;
+            _mapper = mapper;
         }
 
         public IActionResult Index(IEnumerable<Movie> movies)
@@ -33,19 +37,15 @@ namespace FilmFind.Controllers
             return View();
         }
 
-        /// <summary>
-        /// Uses OMDB to try and import the desired movie.
-        /// </summary>
-        /// <param name="searchTerm"></param>
-        /// <returns></returns>
         [HttpGet]
         public IActionResult Import(SearchData searchTerm)
         {
-            var helper = new ImportService();
-            var movies = helper.GetMoviesOnline(searchTerm.SearchText).Result;
+            var helper = new OMDBImportService(_mapper);
+            var movies = helper.GetCompleteMovieList(searchTerm.SearchText, 15);
+            //var movies = helper.GetMovieSummaries(searchTerm.SearchText, 15);
             if (movies != null)
             {
-                ImportMoviesViewModel model = GetImportModelFromMovies(movies);
+                var model = MarkExistingMovies(movies);
                 return View("Index", model);
             }
             else
@@ -54,13 +54,8 @@ namespace FilmFind.Controllers
             }
         }
 
-        private ImportMoviesViewModel GetImportModelFromMovies(List<Movie> movies)
+        private ImportMoviesViewModel MarkExistingMovies(List<Movie> movies)
         {
-            if (movies.Count == 0)
-            {
-                return null;
-            }
-
             var resultModel = new ImportMoviesViewModel();
             foreach (var movie in movies)
             {

@@ -33,6 +33,7 @@ namespace FilmFind.Controllers
                 AverageUserRating = movie.AverageUserRating,
                 Director = movie.Director,
                 MovieId = id,
+                Summary = movie.Plot,
                 Genre = movie.Genre,
                 IMDBRating = movie.IMDBRating,
                 PosterUrl = movie.PosterUrl,

@@ -30,19 +30,28 @@ namespace FilmFind.Entities
 
     }
 
-   //public enum Genre
-   // {
-   //     Drama,
-   //     Crime,
-   //     Thriller,
-   //     Action,
-   //     Adventure,
-   //     SciFi,
-   //     Horror,
-   //     Comedy,
-   //     Fantasy,
-   //     Biography,
-   //     Sport,
-   //     Family
-   // }
+    public class MovieSummary
+    {
+        public string Title { get; set; }
+        public string Year { get; set; }
+        public string imdbID { get; set; }
+        public string Type { get; set; }
+        public string Poster { get; set; }
+    }
+
+    //public enum Genre
+    // {
+    //     Drama,
+    //     Crime,
+    //     Thriller,
+    //     Action,
+    //     Adventure,
+    //     SciFi,
+    //     Horror,
+    //     Comedy,
+    //     Fantasy,
+    //     Biography,
+    //     Sport,
+    //     Family
+    // }
 }

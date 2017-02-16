@@ -10,6 +10,8 @@ using FilmFind.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using AutoMapper;
+using FilmFind.Services.Import;
 
 namespace FilmFind
 {
@@ -32,6 +34,7 @@ namespace FilmFind
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddAutoMapper();
             //services.AddMvc().AddJsonOptions(config => { config.SerializerSettings.ContractResolver = new CamelCasePropertyNameContractResolver()}); // for returning camel cased json results
             services.AddScoped<IMovieData, SqlMovieData>();
             services.AddScoped<IUserMovieDataService, UserMovieDataService>();

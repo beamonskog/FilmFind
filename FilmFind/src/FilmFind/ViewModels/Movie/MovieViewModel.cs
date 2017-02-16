@@ -11,6 +11,7 @@ namespace FilmFind.ViewModels.Movie
         public string Genre { get; set; }
         public string Director { get; set; }
         public string Year { get; set; }
+        public string Summary { get; set; }
 
         public string IMDBRating { get; set; }
         public string RottenTomatoesRating { get; set; }

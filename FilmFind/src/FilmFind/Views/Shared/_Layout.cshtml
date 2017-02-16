@@ -8,7 +8,10 @@
     <title>@ViewBag.Title</title>
     <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="/node_modules/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    @*<script src="/node_modules/jquery/dist/jquery.min.js"></script>*@
     @RenderSection("Styles", false)
+    @RenderSection("scripts", required: false)
+
 </head>
 <body>
     <nav class="navbar navbar-default">

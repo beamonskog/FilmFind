@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FilmFind.ViewModels.Movie.SmallMovieSummaryViewModel>
+
+
+<h2>Search results: </h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th><h4>Title</h4></th>
+            <th><h4>Director</h4></th>
+            <th><h4>Release</h4></th>
+            <th><h4>Genres</h4></th>
+            <th><h4>Rating</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col-1">
+                            <img src="@movie.PosterUrl" width="50" />
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <h4>@movie.Title</h4>
+                </td>
+                <td>
+                    <h5>@movie.Director</h5>
+                </td>
+                <td>
+                    @movie.ReleaseYear
+                </td>
+                <td>
+                    @movie.Genres
+                </td>
+                <td>
+                    @movie.UserAverage
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

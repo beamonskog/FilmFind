@@ -1,0 +1,45 @@
+﻿@model FilmFind.ViewModels.Movie.MovieViewModel
+
+
+<form method="post" asp-action="AddUserMovie">
+    <input asp-for="@Model.MovieId" name="MovieId" type="hidden" class="form-control" />
+    <div class="container-fluid" style="background-color: #fcfcfc; margin-top:100px;">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="@Model.PosterUrl" width="140" />
+            </div>
+
+            <div class="col-md-8">
+                <p>
+                    <h3 style="display:inline">@Model.Title</h3><i style="margin-left: 25px">(@Model.Year)</i>
+                </p>
+                <h4>@Model.Director</h4>
+                <div>@Model.Genres?.ToString()</div>
+                <p style="margin-top:20px;">
+                    <b>IMDB</b>: @Model.IMDBRating, <b>RT</b>: @Model.RottenTomatoesRating
+                </p>
+                <div>
+                    My Rating:
+                    <input name="Rating" type="radio" value="" /> Not seen
+                    @for (int i = 1; i < 6; i++)
+                    {
+                        <input name="Rating" type="radio" value="@i" /> @i;
+                    }
+                </div>
+
+                <div style="margin-top:10px">
+                    <label>Comment: </label>
+                </div>
+
+                <textarea id="msg" name="comment" cols="50" rows="4"></textarea>
+            </div>
+
+            <div class="col-md-2" style="margin-top: 10px">
+                <button style="margin-top: 60px" type="submit" class="btn btn-primary" asp-route-id="@Model.MovieId">
+                    Add to my movies
+                    @*<span class="glyphicon glyphicon-plus fa-2x"></span>*@
+                </button>
+            </div>            
+        </div>
+    </div>
+</form>

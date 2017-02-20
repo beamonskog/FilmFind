@@ -1,0 +1,35 @@
+﻿@model FilmFind.ViewModels.Movie.ImportMovieViewModel
+
+@*@section Styles {
+        <link href="@Url.Content("~/css/MovieSummary.css")" rel="stylesheet" type="text/css" />
+    }*@
+
+<section style="border: thin solid #eeeeee">
+    <form method="post" asp-action="AddToDb">
+        <input asp-for="@Model.Movie.Title" name="Title" type="hidden" class="form-control" />
+        @*<input hidden="hidden" name="movieTitle" />*@
+        <div class="container-fluid" border="1">
+            <div class="row">
+                <div class="col-md-2" style="border: thin solid #eeeeee">
+                    <img src="@Model.Movie.Poster" width="120" />
+                </div>
+                <div class="col-md-9" style="margin-top: 10px">
+                    <p>
+                        <h3 style="display:inline">@Model.Movie.Title</h3>
+                        <i style="margin-left: 25px">(@Model.Movie.Year)</i>
+                    </p>
+                </div>
+                @if (Model.IsInDb)
+                {
+                    <i class="fa fa-check fa-2x" title="Add to movie-db" style="color:rgba(51, 122, 183, 0.25)"></i>
+                }
+                else
+                {
+                    <button style="margin-top: 60px; border:0; background:none;" type="submit">
+                        <i class="fa fa-plus fa-2x" title="Add to movie-db" style="color:#337ab7"></i>
+                    </button>
+                }
+            </div>
+        </div>
+    </form>
+</section>

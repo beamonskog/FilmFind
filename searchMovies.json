@@ -1,0 +1,76 @@
+{
+    "Search": [
+        {
+            "Title": "Alien",
+            "Year": "1979",
+            "imdbID": "tt0078748",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BNDNhN2IxZWItNGEwYS00ZDNhLThiM2UtODU3NWJlZjBkYjQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien 3",
+            "Year": "1992",
+            "imdbID": "tt0103644",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BNThhODA5Y2ItMzEzYy00MjE3LTgxYTUtNDIzYjc2ZTllODE0XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien: Resurrection",
+            "Year": "1997",
+            "imdbID": "tt0118583",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BM2YxYmFjYWMtMzBmMC00MTVmLThhMjUtYWU5Yzg2OGQwZjE3XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+        },
+        {
+            "Title": "AVP: Alien vs. Predator",
+            "Year": "2004",
+            "imdbID": "tt0370263",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU4MjIwMTcyMl5BMl5BanBnXkFtZTYwMTYwNDA3._V1_SX300.jpg"
+        },
+        {
+            "Title": "My Stepmother Is an Alien",
+            "Year": "1988",
+            "imdbID": "tt0095687",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM5OTI0MzM5Nl5BMl5BanBnXkFtZTcwOTcwMjcyMQ@@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien Nation",
+            "Year": "1988",
+            "imdbID": "tt0094631",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU5NjYxNjM5MV5BMl5BanBnXkFtZTcwNDk4MTU1MQ@@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien Raiders",
+            "Year": "2008",
+            "imdbID": "tt0996979",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjc0MzcwMDEyOV5BMl5BanBnXkFtZTcwNTU4NTMyMg@@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien Autopsy",
+            "Year": "2006",
+            "imdbID": "tt0466664",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMzAxNTU5ODYwMl5BMl5BanBnXkFtZTcwNDM0MDMzMQ@@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien Abduction",
+            "Year": "2014",
+            "imdbID": "tt2510434",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMxMjUwMTU1Nl5BMl5BanBnXkFtZTgwOTI4NjMzMTE@._V1_SX300.jpg"
+        },
+        {
+            "Title": "Alien Outpost",
+            "Year": "2014",
+            "imdbID": "tt2474972",
+            "Type": "movie",
+            "Poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc4ODY2MzIzNl5BMl5BanBnXkFtZTgwNTg3ODY0MzE@._V1_SX300.jpg"
+        }
+    ],
+    "totalResults": "584",
+    "Response": "True"
+}

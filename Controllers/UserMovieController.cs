@@ -45,7 +45,7 @@ namespace FilmFind.Controllers
             {
                 models.Add(new UserMovieViewModel()
                 {
-                    Movie = _sqlMovieData.Get(userMovie.MovieId),
+                    Movie = _sqlMovieData.GetShort(userMovie.MovieId),
                     Comment = userMovie.UserComment,
                     Rating = userMovie.UserRating,
                     IsFavorite = userMovie.Favored,
@@ -65,7 +65,7 @@ namespace FilmFind.Controllers
 
             var viewModel = new UserMovieViewModel()
             {
-                Movie = _sqlMovieData.Get(userMovie.MovieId),
+                Movie = _sqlMovieData.GetComplete(userMovie.MovieId),
                 Comment = userMovie.UserComment,
                 Rating = userMovie.UserRating,
                 IsFavorite = userMovie.Favored,
@@ -102,7 +102,7 @@ namespace FilmFind.Controllers
 
         public IActionResult AddUserMovie(int id)
         {
-            var movie = _sqlMovieData.Get(id);
+            var movie = _sqlMovieData.GetComplete(id);
             var model = new MovieViewModel
             {
                 AverageUserRating = movie.AverageUserRating,
@@ -206,7 +206,7 @@ namespace FilmFind.Controllers
             userMovie = _userMovieData.AddFavorite(userMovie);
             _userMovieData.Commit();
 
-            var movie = _sqlMovieData.Get(userMovie.MovieId);
+            var movie = _sqlMovieData.GetShort(userMovie.MovieId);
             _sqlMovieData.AddFavorite(movie);
             _sqlMovieData.Commit();
             return true;
@@ -217,7 +217,7 @@ namespace FilmFind.Controllers
             userMovie = _userMovieData.AddHype(userMovie);
             _userMovieData.Commit();
 
-            var movie = _sqlMovieData.Get(userMovie.MovieId);
+            var movie = _sqlMovieData.GetShort(userMovie.MovieId);
             _sqlMovieData.AddHype(movie);
             _sqlMovieData.Commit();
 
@@ -229,7 +229,7 @@ namespace FilmFind.Controllers
             userMovie = _userMovieData.RemoveFavorite(userMovie);
             _userMovieData.Commit();
 
-            var movie = _sqlMovieData.Get(userMovie.MovieId);
+            var movie = _sqlMovieData.GetShort(userMovie.MovieId);
             _sqlMovieData.RemoveFavorite(movie);
             _sqlMovieData.Commit();
             return true;
@@ -240,7 +240,7 @@ namespace FilmFind.Controllers
             userMovie = _userMovieData.RemoveHype(userMovie);
             _userMovieData.Commit();
 
-            var movie = _sqlMovieData.Get(userMovie.MovieId);
+            var movie = _sqlMovieData.GetShort(userMovie.MovieId);
             _sqlMovieData.RemoveHype(movie);
             _sqlMovieData.Commit();
             return true;

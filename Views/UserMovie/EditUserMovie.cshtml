@@ -4,7 +4,7 @@
     <div class="container-fluid" style="background-color: #fcfcfc; margin-top:100px;">
         <div class="row">
             <div class="col-md-2">
-                <img src="@Model.Movie.PosterUrl" width="140" />
+                <img src="@Model.Movie.Poster" width="140" />
             </div>
 
             <div class="col-md-8">
@@ -12,7 +12,8 @@
                     <h3 style="display:inline">@Model.Movie.Title</h3><i style="margin-left: 25px">(@Model.Movie.Year)</i>
                 </p>
                 <h4>@Model.Movie.Director</h4>
-                <div>@Model.Movie.Genre</div>
+                @{var genresString = string.Join(", ", Model.Movie.Genres.Select(m=>m.Genre.ToString()).ToArray());}@*inte så snyggt*@
+                <i>@genresString</i>
                 <p style="margin-top:20px;">
                     <b>IMDB</b>: @Model.Movie.IMDBRating, <b>RT</b>: @Model.Movie.RottenTomatoesRating
                 </p>

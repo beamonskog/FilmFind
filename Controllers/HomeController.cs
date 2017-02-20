@@ -36,7 +36,7 @@ namespace FilmFind.Controllers
 
         public IActionResult AboutMovie(int id)
         {
-            var movie = _allMovies.Get(id);
+            var movie = _allMovies.GetShort(id);
             return View(movie);
         }
 

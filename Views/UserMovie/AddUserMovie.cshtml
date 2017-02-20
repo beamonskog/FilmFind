@@ -14,7 +14,8 @@
                     <h3 style="display:inline">@Model.Title</h3><i style="margin-left: 25px">(@Model.Year)</i>
                 </p>
                 <h4>@Model.Director</h4>
-                <div>@Model.Genres?.ToString()</div>
+                @{var genresString = string.Join(", ", Model.Genres.ToArray());}
+                <i>@genresString</i>
                 <p style="margin-top:20px;">
                     <b>IMDB</b>: @Model.IMDBRating, <b>RT</b>: @Model.RottenTomatoesRating
                 </p>

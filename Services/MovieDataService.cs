@@ -17,7 +17,7 @@ namespace FilmFind.Services
         IEnumerable<Movie> GetTopRated(int count);
         IEnumerable<Movie> GetMostHyped(int count);
         IEnumerable<Movie> Search(string searchString);
-        Movie Get(int id);
+        Movie GetShort(int id);
         Movie Get(string title);
         Movie GetComplete(int id);
         Movie Find(string title);
@@ -84,15 +84,10 @@ namespace FilmFind.Services
             throw new NotImplementedException();
         }
 
-        public Movie Get(int id)
+        public Movie GetShort(int id)
         {
-            //var userMovies_test = _context.UserMovies.ToList();
-            //var userMovies = _context.UserMovies.Where(um => um.MovieId == id).ToList();//future!
             var movie = _context.Movies.
                 Where(m => m.Id == id).
-                //Include(m => m.AddedByUsers.Select(s => s.UserMovies)).
-                //Include("AddedByUsers").
-                //Select(x=> new { Movie = x, Reviews = x.AddedByUsers.Select(y => y.UserMovies) }).
                 FirstOrDefault();
 
             return movie;

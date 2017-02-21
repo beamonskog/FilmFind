@@ -28,6 +28,8 @@ namespace FilmFind.Entities.Models
 
         public string IMDBRating { get; set; }
         public string RottenTomatoesRating { get; set; }
+        public TomatoeImage TomatoeImage { get; set; }
+
         public string Poster { get; set; }
         public string imdbID { get; set; }
         public string Type { get; set; }

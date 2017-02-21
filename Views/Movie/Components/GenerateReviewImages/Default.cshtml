@@ -1,0 +1,29 @@
+﻿@model FilmFind.ViewModels.Movie.GenerateIconsViewModel
+
+@if (!User.Identity.IsAuthenticated)
+{
+    return;
+}
+
+<p style="display:inline">
+    <img src="~/Images/imdb.jpg" height="40" style="display:inline" />
+    <h4 style="display:inline; ">@Model.ImdbScore</h4>
+    @{
+        switch (Model.TomatoeImage)
+        {
+            case FilmFind.Entities.Models.TomatoeImage.Rotten:
+                <img src="~/Images/rotten.jpg" alt="Rotten" height="40" style="display:inline; margin-left:15px;" />
+                break;
+            case FilmFind.Entities.Models.TomatoeImage.Fresh:
+                <img src="~/Images/fresh.jpg" alt="Fresh" height="40" style="display:inline; margin-left:15px;" />
+                break;
+            case FilmFind.Entities.Models.TomatoeImage.Certified:
+                <img src="~/Images/certified fresh.jpg" alt="Certified fresh" height="40" style="display:inline; margin-left:15px;" />
+                break;
+            default:
+                break;
+        }
+    }
+    <h4 style="display:inline; ">@Model.TomatoeScore</h4>
+    <b style="margin-left:15px;">User Avg: </b> @Model.UserAverage
+</p>

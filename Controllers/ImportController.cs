@@ -29,6 +29,8 @@ namespace FilmFind.Controllers
 
         public IActionResult Index(IEnumerable<IMovie> movies)
         {
+            //_sqlMovieData.UpdateCurrentMovies(_mapper);
+
             if (movies == null)
             {
                 return View(movies);

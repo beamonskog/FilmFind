@@ -11,7 +11,7 @@ namespace FilmFind.Services
 {
     public interface IMovieData
     {
-        void GetPosters(IMapper mapper);
+        void UpdateCurrentMovies(IMapper mapper);
         IEnumerable<Movie> GetAll();
         IEnumerable<Movie> GetLatest(int count);
         IEnumerable<Movie> GetTopRated(int count);
@@ -227,20 +227,23 @@ namespace FilmFind.Services
 
 
 
-        public void GetPosters(IMapper mapper)
+        public void UpdateCurrentMovies(IMapper mapper)
         {
             var importer = new OMDBImportService(mapper);
 
             var allMovies = GetAll();
             for (int i = 0; i < allMovies.Count(); i++)
             {
-                if (string.IsNullOrEmpty(allMovies.ElementAt(i).Poster))
-                {
+                //if (string.IsNullOrEmpty(allMovies.ElementAt(i).Poster))
+                //{
                     var tempMovie = importer.GetCompleteMovie(allMovies.ElementAt(i).Title);
                     allMovies.ElementAt(i).Poster = tempMovie.Poster;
-                }
+                    allMovies.ElementAt(i).Plot = tempMovie.Plot;
+                    allMovies.ElementAt(i).TomatoeImage = tempMovie.TomatoeImage;
+                //}
                 _context.SaveChanges();
             }
+
             //foreach (var movie in allMovies)
             //{
             //    if (string.IsNullOrEmpty(movie.Poster))

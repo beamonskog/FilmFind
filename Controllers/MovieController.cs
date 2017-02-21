@@ -31,13 +31,14 @@ namespace FilmFind.Controllers
             var model = new MovieViewModel
             {
                 AverageUserRating = movie.AverageUserRating,
+                IMDBRating = movie.IMDBRating,
+                RottenTomatoesRating = movie.RottenTomatoesRating,
+                TomatoeImage = movie.TomatoeImage,
                 Director = movie.Director,
                 MovieId = id,
                 Summary = movie.Plot,
                 Genres = movie.Genres?.Select(g => g.Genre).ToList(),
-                IMDBRating = movie.IMDBRating,
                 PosterUrl = movie.Poster,
-                RottenTomatoesRating = movie.RottenTomatoesRating,
                 Title = movie.Title,
                 Year = movie.Year,
                 UserOpinion = new List<UserOpinionViewModel>()

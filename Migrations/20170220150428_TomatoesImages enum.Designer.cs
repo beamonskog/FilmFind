@@ -9,9 +9,10 @@ using FilmFind.Entities.Models;
 namespace FilmFind.Migrations
 {
     [DbContext(typeof(FilmFindDbContext))]
-    partial class FilmFindDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170220150428_TomatoesImages enum")]
+    partial class TomatoesImagesenum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")

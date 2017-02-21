@@ -22,36 +22,26 @@
 
             @{var genresString = string.Join(", ", Model.Genres.ToArray());}
             <i>@genresString</i>
-            <p style="margin-top:20px;">
-                <b>IMDB</b>: @Model.IMDBRating,
-                <b>RT</b>: @Model.RottenTomatoesRating
-                <br />
-                <b>User Avg: </b>
-
-                @{
-                    if (Model.AverageUserRating == 0)
-                    {
-                        <i>not rated</i>
-                    }
-                    else
-                    {
-                        @Model.AverageUserRating
-                    }
-                }
-            </p>
+            <div style="margin-top:20px; margin-bottom:30px" >
+                @await Component.InvokeAsync("GenerateReviewImages", new
+           {
+               UserAverage = @Model.AverageUserRating,
+               TomatoeImage = @Model.TomatoeImage,
+               TomatoeScore = @Model.RottenTomatoesRating,
+               ImdbScore = @Model.IMDBRating
+           })
+            </div>
             <p>@Model.Summary</p>
         </div>
         <div class="col-sm-2">
-            @if (User.Identity.IsAuthenticated)
-            {
-                @await Component.InvokeAsync("ToggleMovieIcons", new
-           {
-               movieId = @Model.MovieId,
-               isInList = @Model.IsInList,
-               isHyped = @Model.IsHyped,
-               isFavored = @Model.IsHyped,
-               isAdded = @Model.IsInList
-           })}
+            @await Component.InvokeAsync("ToggleMovieIcons", new
+       {
+           movieId = @Model.MovieId,
+           isInList = @Model.IsInList,
+           isHyped = @Model.IsHyped,
+           isFavored = @Model.IsFavorite,
+           isAdded = @Model.IsInList
+       })
 
             @*<p><a asp-controller="UserMovie" asp-action="AddUserMovie" asp-route-id="@Model.MovieId"><i class="fa fa-plus fa-2x" title="Add to my movies"></i></a><br /></p>
                 <p><a asp-controller="UserMovie" asp-action="EditUserMovie" asp-route-id="@Model.MovieId"><i class="fa fa-edit fa-2x" title="edit movie"></i></a><br /></p>*@

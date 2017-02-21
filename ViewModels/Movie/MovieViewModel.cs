@@ -1,4 +1,5 @@
 ﻿using FilmFind.Entities;
+using FilmFind.Entities.Models;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,6 +17,7 @@ namespace FilmFind.ViewModels.Movie
 
         public string IMDBRating { get; set; }
         public string RottenTomatoesRating { get; set; }
+        public TomatoeImage TomatoeImage { get; set; }
         public string PosterUrl { get; set; }
 
         [Display(Name = "User average")]
